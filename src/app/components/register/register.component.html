@@ -1,0 +1,34 @@
+<mat-card class="registerCard mat-elevation-z15">
+    <mat-card-title>Register</mat-card-title>
+    <hr>
+    <mat-card-content>
+        <form #registerForm="ngForm">
+            <mat-form-field>
+                <mat-label>Surname</mat-label>
+                <input matInput [(ngModel)]="surname" name="surname" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]="firstname" name="firstname" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [(ngModel)]="email" #mail="ngModel" name="email" email required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="password" name="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Repeat Password</mat-label>
+                <input matInput type="password" [(ngModel)]="repeatPassword" name="repeatPassword" required>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <hr>
+    <button mat-raised-button color="primary" (click)="register(registerForm)" [disabled]="registerForm.form.invalid || password !== repeatPassword">Register</button>
+</mat-card>

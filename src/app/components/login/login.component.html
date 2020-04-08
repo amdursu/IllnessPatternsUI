@@ -1,0 +1,19 @@
+<mat-card class="loginCard mat-elevation-z15">
+    <mat-card-title>Login</mat-card-title>
+    <hr>
+    <mat-card-content>
+        <form #loginForm="ngForm">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [(ngModel)]="email" #mail="ngModel" name="email" email required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="password" name="password" required>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <hr>
+    <button mat-raised-button color="primary" (click)="login(loginForm)" [disabled]="loginForm.form.invalid">Log In</button>
+</mat-card>
