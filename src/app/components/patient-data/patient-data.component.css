@@ -1,0 +1,55 @@
+.patientCard{
+    max-height: 80vh;
+}
+
+.patient-data{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.mat-accordion{
+    margin-top: 20px;
+}
+
+.mat-expansion-panel{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.symptoms, .diseases{
+    margin: 0 auto;
+    width: 60%;
+}
+
+.add{
+    border-radius: 50%;
+    padding: 7px;
+    font-size: 1.3em;
+    background-color: #3e51b5;
+    color: white;
+    margin-top: 10px;
+}
+
+.add:hover{
+    cursor: pointer;
+    background-color: #2e3e8d;
+}
+
+.delete{
+    border-radius: 50%;
+    padding: 7px;
+    font-size: 1.3em;
+    background-color: #b53e3e;
+    color: white;
+}
+
+.delete:hover{
+    cursor: pointer;
+    background-color: #973434;
+}
+
+td{
+    padding: 5px;
+}

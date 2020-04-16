@@ -1,0 +1,111 @@
+<div class="patient-data">
+    <mat-card class="patientCard">
+        <mat-card-title>Enter your medical data</mat-card-title>
+        <hr>
+        <mat-card-content>
+            <form #patientForm="ngForm" style="max-height: 55vh; overflow-y: scroll;">
+                <mat-form-field>
+                    <mat-label>Age</mat-label>
+                    <input matInput type="text" ngModel #age="ngModel" name="age">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Heart Rate</mat-label>
+                    <input matInput type="text" ngModel #heartRate="ngModel" name="heartRate">
+                </mat-form-field>
+                <br>
+                <label style="margin-right: 10px; margin-left: -117px;"><b>Blood Pressure: </b></label>
+                <mat-form-field style="width: 77px !important;">
+                    <mat-label>Systolic</mat-label>
+                    <input matInput type="text" ngModel name="systolic" >
+                </mat-form-field>
+                <span style="font-size: 16px; margin: 0 10px;">/</span>
+                <mat-form-field style="width: 77px !important;">
+                    <mat-label>Diastolic</mat-label>
+                    <input matInput type="text" ngModel name="diastolic" style="width: 40px !important;">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Weight</mat-label>
+                    <input matInput type="text" ngModel #weight="ngModel" name="weight">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Height</mat-label>
+                    <input matInput type="text" ngModel #height="ngModel" name="height">
+                </mat-form-field>
+                <br>
+                <br>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Symptoms</mat-panel-title>
+                            <mat-panel-description>Add all the symptoms you are experiencing</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="symptoms">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Symptom</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <mat-form-field>
+                                                <mat-label>Enter symptom name ...</mat-label>
+                                                <input matInput type="text" [(ngModel)]="symptom" name="symptom">
+                                            </mat-form-field>
+                                        </td>
+                                        <td><i class="pi pi-plus add" (click)="addSymptom()"></i></td>
+                                    </tr>
+                                    <tr *ngFor="let symptom of symptoms">
+                                        <td style="padding-top: 10px;">{{ symptom }}</td>
+                                        <td><i class="pi pi-trash delete" (click)="deleteSymptom(symptom)"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Known Diseases</mat-panel-title>
+                            <mat-panel-description>Please add all your current diseases</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="diseases">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Disease</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <mat-form-field>
+                                                <mat-label>Enter disease name ...</mat-label>
+                                                <input matInput type="text" [(ngModel)]="disease" name="disease">
+                                            </mat-form-field>
+                                        </td>
+                                        <td><i class="pi pi-plus add" (click)="addDisease()"></i></td>
+                                    </tr>
+                                    <tr *ngFor="let disease of diseases">
+                                        <td style="margin-top: 5px;">{{ disease }}</td>
+                                        <td><i class="pi pi-trash delete" (click)="deleteDisease(disease)"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-expansion-panel>
+                    <br>
+                </mat-accordion>
+            </form>
+        </mat-card-content>
+        <hr>
+        <button mat-raised-button color="primary" *ngIf="(device | async) === null" (click)="sendData(patientForm.value)">Send Data</button>
+        <button mat-raised-button color="primary" *ngIf="(device | async)" (click)="disconnect()">Disconnect</button>
+    </mat-card>
+</div>

@@ -11,8 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth/src/public_api';
+import { PatientDataComponent } from './components/patient-data/patient-data.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    PatientDataComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,11 @@ import { HomeComponent } from './components/home/home.component';
     MatCardModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    WebBluetoothModule.forRoot({
+      enableTracing: true
+    }),
+    MatExpansionModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
