@@ -16,6 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth/src/public_api';
 import { PatientDataComponent } from './components/patient-data/patient-data.component';
+import { PatientsComponent } from './components/patients/patients.component';
+import { PatientComponent } from './components/patients/components/patient/patient.component';
+import { TableModule } from 'primeng/table'
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { PatientDataComponent } from './components/patient-data/patient-data.com
     LoginComponent,
     HeaderComponent,
     HomeComponent,
-    PatientDataComponent
+    PatientDataComponent,
+    PatientsComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { PatientDataComponent } from './components/patient-data/patient-data.com
     WebBluetoothModule.forRoot({
       enableTracing: true
     }),
-    MatExpansionModule
+    MatExpansionModule,
+    TableModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
