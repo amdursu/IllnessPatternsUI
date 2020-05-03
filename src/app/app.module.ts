@@ -19,6 +19,9 @@ import { PatientDataComponent } from './components/patient-data/patient-data.com
 import { PatientsComponent } from './components/patients/patients.component';
 import { PatientComponent } from './components/patients/components/patient/patient.component';
 import { TableModule } from 'primeng/table'
+import { SidebarModule } from 'primeng/sidebar'
+import { ButtonModule } from 'primeng/button'
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { TableModule } from 'primeng/table'
       enableTracing: true
     }),
     MatExpansionModule,
-    TableModule
+    TableModule,
+    SidebarModule,
+    ButtonModule,
+    MultiSelectModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

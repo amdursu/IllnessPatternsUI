@@ -28,6 +28,7 @@
                 <input matInput type="password" [(ngModel)]="repeatPassword" name="repeatPassword" required>
             </mat-form-field>
         </form>
+        <a routerLink="/login">Already have an account? Login now!</a>
     </mat-card-content>
     <hr>
     <button mat-raised-button color="primary" (click)="register(registerForm)" [disabled]="registerForm.form.invalid || password !== repeatPassword">Register</button>

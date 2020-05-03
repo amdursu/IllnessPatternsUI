@@ -7,7 +7,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class DataService {
 
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
   });
 
   options = {
@@ -17,7 +18,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getPatients(){
-    return this.http.get('/api/patients/getPatients');
+    return this.http.get('/api/patients/getPatients', this.options);
   }
 
   getPatient(id){
@@ -28,5 +29,9 @@ export class DataService {
 
   sendDiagnosis(body){
     return this.http.post('/api/patients/sendDiagnosis', body, this.options);
+  }
+
+  search(body){
+    return this.http.post('/api/patients/patientSearch', body, this.options);
   }
 }

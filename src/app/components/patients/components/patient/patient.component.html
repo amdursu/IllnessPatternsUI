@@ -1,4 +1,5 @@
 <div class="patientAccordion">
+    <h4 class="mt-2 mb-4">Patient Data for {{ patientData[0].name }}</h4>
     <mat-accordion>
         <ng-container *ngFor="let data of patientData">
             <mat-expansion-panel>
@@ -33,7 +34,6 @@
                                 <mat-label>Enter diagnosis</mat-label>
                                 <input matInput type="text" [(ngModel)]="diagnosis" name="diagnosis" >
                             </mat-form-field>
-                            <!-- <button mat-raised-button color="primary" style="margin-left: 10px;">Send</button> -->
                             <button class="btn btn-sm btn-info" style="margin-left: 10px;" (click)="sendDiagnosis(data.id)">Send</button>
                         </div>
                         <div class="col-6 mt-4" *ngIf="data.givenDiagnosis || sentDiagnosis">
@@ -45,3 +45,62 @@
         </ng-container>
     </mat-accordion>
 </div>
+
+<div class="row mt-3">
+    <span class="ml-3 mr-3 pt-1"><b>Patient search filters:</b></span>
+    <span class="mr-3">
+        <p-multiSelect [options]="filters" [(ngModel)]="selectedFilters" [style]="{'width': '300px'}">
+            <ng-template let-filter pTemplate="item" >
+                <ng-container [ngSwitch]="filter.label">
+                    <span *ngSwitchCase="'Average Blood Pressure'" style="font-size:14px;margin-top:4px"><b>{{ filter.label }}</b> </span>
+                    <span *ngSwitchDefault style="font-size:14px;margin-top:4px"><b>{{ filter.label }}</b></span>
+                </ng-container>
+            </ng-template>
+        </p-multiSelect>
+    </span>
+    <span>
+        <button mat-raised-button color="primary" (click)="searchPatients()" [disabled]="!selectedFilters || selectedFilters.length == 0">Search</button>
+    </span>
+</div>
+
+<div class="mt-5 ml-1">
+    <h4 class="mb-4">Search results</h4>
+    <mat-accordion>
+        <ng-container *ngFor="let data of searchResults">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Data ID: {{ data.id }}</mat-panel-title>
+                    <mat-panel-description>Registered on {{ data.date }}</mat-panel-description>
+                </mat-expansion-panel-header>
+                <hr class="pt-0 mt-0">
+                <div class="patientData text-center">
+                    <div class="row text-center">
+                        <div class="col-2"><b>Age: </b>{{ data.age }}</div>
+                        <div class="col-3"><b>Heart Rate: </b>{{ data.heartRate }}</div>
+                        <div class="col-3"><b>Blood Pressure: </b>{{ data.bloodPressure }}</div>
+                        <div class="col-2"><b>Weight: </b>{{ data.weight }}</div>
+                        <div class="col-2"><b>Height: </b>{{ data.height }}</div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3" *ngIf="data.diseases.length > 0">
+                            <table class="table">
+                                <tr><th>Known Diseases</th></tr>
+                                <tr *ngFor="let disease of data.diseases"><td>{{ disease.name }}</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-3" *ngIf="data.symptoms.length > 0">
+                            <table class="table">
+                                <tr><th>Symptoms</th></tr>
+                                <tr *ngFor="let symptom of data.symptoms"><td>{{ symptom.name }}</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-6 mt-4" *ngIf="data.givenDiagnosis || sentDiagnosis">
+                            <b>Given Diagnosis: </b>{{ data.givenDiagnosis || diagnosis }}
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </ng-container>
+    </mat-accordion>
+</div>
+

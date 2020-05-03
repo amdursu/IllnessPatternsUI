@@ -5,3 +5,27 @@ nav {
     color: grey;
     height: 50px;
 }
+
+.menuButton {
+    color: black;
+    background-color: transparent;
+    border: 0px;
+    height: 35px;
+    width: 45px;
+    font-size: 25px;
+}
+
+.menu {
+    margin: 40px 10px 0 10px;
+}
+
+.navigation{
+    margin-top: 50px;
+}
+
+.menu a{
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-decoration: none;
+}

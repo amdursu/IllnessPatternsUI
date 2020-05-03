@@ -8,9 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  display;
+  admin: boolean = false;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.getTokenPayload().admin == 1)
+      this.admin = true;
   }
 
   logout(){

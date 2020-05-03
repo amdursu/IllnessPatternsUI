@@ -13,6 +13,7 @@
                 <input matInput type="password" [(ngModel)]="password" name="password" required>
             </mat-form-field>
         </form>
+        <a routerLink="/register">Don't have an account? Register now!</a>
     </mat-card-content>
     <hr>
     <button mat-raised-button color="primary" (click)="login(loginForm)" [disabled]="loginForm.form.invalid">Log In</button>
