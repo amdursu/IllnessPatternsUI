@@ -1,5 +1,8 @@
 <div class="patientAccordion">
-    <h4 class="mt-2 mb-4">Patient Data for {{ patientData[0].name }}</h4>
+    <div class="mb-4">
+        <h4 class="mt-2 mb-4" style="display: inline;">Patient Data for {{ patientData[0].name }}</h4>
+        <button class="btn btn-raised btn-warning" style="float: right;" (click)="viewStatistics()">Statistics</button>
+    </div>
     <mat-accordion>
         <ng-container *ngFor="let data of patientData">
             <mat-expansion-panel>

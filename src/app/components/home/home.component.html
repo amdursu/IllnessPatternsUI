@@ -1,0 +1,49 @@
+<div class="patientAccordion">
+    <div class="mt-3 mb-4">
+        <h4 class="mt-2 mb-4" style="display: inline;">Your Patient Data</h4>
+        <button class="btn btn-raised btn-info" style="float: right;" routerLink="patient-data">Add patient data</button>
+    </div>
+    <ng-container *ngIf="!patientData || patientData.length == 0">
+        <h5 class="text-center" style="color:rgb(134, 134, 134); margin-top: 20%;">No Patient Data</h5>
+    </ng-container>
+    <mat-accordion>
+        <ng-container *ngFor="let data of patientData">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Data ID: {{ data.id }}</mat-panel-title>
+                    <mat-panel-description>Registered on {{ data.date }}</mat-panel-description>
+                </mat-expansion-panel-header>
+                <hr class="pt-0 mt-0">
+                <div class="patientData text-center">
+                    <div class="row text-center">
+                        <div class="col-2"><b>Age: </b>{{ data.age }}</div>
+                        <div class="col-3"><b>Heart Rate: </b>{{ data.heartRate }}</div>
+                        <div class="col-3"><b>Blood Pressure: </b>{{ data.bloodPressure }}</div>
+                        <div class="col-2"><b>Weight: </b>{{ data.weight }}</div>
+                        <div class="col-2"><b>Height: </b>{{ data.height }}</div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3" *ngIf="data.diseases.length > 0">
+                            <table class="table">
+                                <tr><th>Known Diseases</th></tr>
+                                <tr *ngFor="let disease of data.diseases"><td>{{ disease.name }}</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-3" *ngIf="data.symptoms.length > 0">
+                            <table class="table">
+                                <tr><th>Symptoms</th></tr>
+                                <tr *ngFor="let symptom of data.symptoms"><td>{{ symptom.name }}</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-6 mt-4" *ngIf="data.givenDiagnosis">
+                            <b>Given Diagnosis: </b>{{ data.givenDiagnosis }}
+                        </div>
+                        <div class="col-6 mt-4" *ngIf="!data.givenDiagnosis">
+                            <h6 style="color: rgb(134, 134, 134);">No given diagnosis</h6>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </ng-container>
+    </mat-accordion>
+</div>

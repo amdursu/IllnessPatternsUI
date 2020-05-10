@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  patientData;
+
+  constructor(private data: DataService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    
+    let patientID = this.auth.getTokenPayload().id;
+    this.data.getPatient(patientID).subscribe(patientData => this.patientData = patientData);
   }
 
 }

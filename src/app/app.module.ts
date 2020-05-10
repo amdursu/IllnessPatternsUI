@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth/src/public_api';
@@ -22,6 +24,8 @@ import { TableModule } from 'primeng/table'
 import { SidebarModule } from 'primeng/sidebar'
 import { ButtonModule } from 'primeng/button'
 import { MultiSelectModule } from 'primeng/multiselect';
+import { StatisticsComponent } from './components/patients/components/statistics/statistics.component';
+import { NgApexchartsModule } from "ng-apexcharts"
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     HomeComponent,
     PatientDataComponent,
     PatientsComponent,
-    PatientComponent
+    PatientComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
     TableModule,
     SidebarModule,
     ButtonModule,
-    MultiSelectModule
+    MultiSelectModule,
+    MatDialogModule,
+    MatTabsModule,
+    NgApexchartsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

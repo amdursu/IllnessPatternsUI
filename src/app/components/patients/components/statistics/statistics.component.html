@@ -1,0 +1,41 @@
+<mat-tab-group>
+    <mat-tab label="Heart Rate Statistics">
+        <div id="chart1" class="mt-3">
+            <apx-chart
+              [series]="chartOptions1.series"
+              [chart]="chartOptions1.chart"
+              [xaxis]="chartOptions1.xaxis"
+              [dataLabels]="chartOptions1.dataLabels"
+              [grid]="chartOptions1.grid"
+              [stroke]="chartOptions1.stroke"
+              [title]="chartOptions1.title"
+            ></apx-chart>
+          </div>
+    </mat-tab>
+    <mat-tab label="Blood Pressure Statistics">
+        <div id="chart2">
+            <apx-chart
+              [series]="chartOptions2.series"
+              [chart]="chartOptions2.chart"
+              [xaxis]="chartOptions2.xaxis"
+              [dataLabels]="chartOptions2.dataLabels"
+              [grid]="chartOptions2.grid"
+              [stroke]="chartOptions2.stroke"
+              [title]="chartOptions2.title"
+            ></apx-chart>
+          </div>
+    </mat-tab>
+    <mat-tab label="Weight Statistics">
+        <div id="chart3">
+            <apx-chart
+              [series]="chartOptions3.series"
+              [chart]="chartOptions3.chart"
+              [xaxis]="chartOptions3.xaxis"
+              [dataLabels]="chartOptions3.dataLabels"
+              [grid]="chartOptions3.grid"
+              [stroke]="chartOptions3.stroke"
+              [title]="chartOptions3.title"
+            ></apx-chart>
+          </div>
+    </mat-tab>
+  </mat-tab-group>

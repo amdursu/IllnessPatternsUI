@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog'
+import { StatisticsComponent } from '../statistics/statistics.component';
 
 @Component({
   selector: 'app-patient',
@@ -21,7 +23,7 @@ export class PatientComponent implements OnInit {
 
   filters = [];
 
-  constructor(private data: DataService, private route: ActivatedRoute) { }
+  constructor(private data: DataService, private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     let patientDataID = this.route.snapshot.params.id;
@@ -54,6 +56,16 @@ export class PatientComponent implements OnInit {
 
   searchPatients(){
     this.data.search({filters: this.selectedFilters }).subscribe(searchResults => this.searchResults = searchResults);
+  }
+
+  viewStatistics(){
+    let statistics = this.dialog.open(StatisticsComponent, {
+      width: '800px',
+      height: '480px',
+      data: {
+        patientData: this.patientData
+      }
+    })
   }
 
 }
